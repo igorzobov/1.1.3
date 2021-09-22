@@ -10,18 +10,9 @@ public class Util {
     public static Connection getConnectionJDBC() {
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
-//            Statement statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
-//
-//            while (resultSet.next()) {
-//                String userName = resultSet.getString("name");
-//                System.out.println(userName);
-//            }
-//            resultSet.close();
-//            statement.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("getConnectionJDBC ERROR");
         }
         return null;
     }

@@ -28,6 +28,23 @@ public class User {
         this.age = age;
     }
 
+    public User(long userId, String userName, String userLastName, byte userAge) {
+        this.id = userId;
+        this.name = userName;
+        this.lastName = userLastName;
+        this.age = userAge;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
