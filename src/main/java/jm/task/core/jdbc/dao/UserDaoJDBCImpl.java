@@ -23,6 +23,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     "lastName CHAR(100) NOT NULL, " +
                     "age INT NOT NULL )";
             statement.execute(sql);
+            statement.close();
             System.out.println("createUsersTable ok");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,6 +38,7 @@ public class UserDaoJDBCImpl implements UserDao {
             Statement statement = connection.createStatement();
             String sql = "DROP TABLE users";
             statement.execute(sql);
+            statement.close();
             System.out.println("dropUsersTable ok");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,6 +56,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.execute();
+            preparedStatement.close();
             System.out.println("saveUser ok");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,6 +71,7 @@ public class UserDaoJDBCImpl implements UserDao {
             String sql = "DELETE FROM users WHERE (id) = (?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1, id);
+            preparedStatement.close();
             System.out.println("removeUserById ok");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,6 +94,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.add(new User(userId, userName, userLastName, userAge));
             }
             System.out.println("getAllUsers ok");
+            statement.close();
             return userList;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,6 +108,7 @@ public class UserDaoJDBCImpl implements UserDao {
             Connection connection = Util.getConnectionJDBC();
             Statement statement = connection.createStatement();
             statement.execute("DELETE FROM users");
+            statement.close();
             System.out.println("cleanUsersTable ok");
         } catch (SQLException e) {
             e.printStackTrace();

@@ -13,6 +13,12 @@ public class Util {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("getConnectionJDBC ERROR");
+        } finally {
+            try {
+                DriverManager.getConnection(URL, USER, PASSWORD).close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
